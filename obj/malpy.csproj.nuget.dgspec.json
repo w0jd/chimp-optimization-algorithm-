@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "/home/wojtek/Documenti/GitHub/chimp-optimization-algorithm-/malpy.csproj": {}
+    "C:\\Users\\Wojtek\\Documents\\GitHub\\chimp-optimization-algorithm-\\malpy.csproj": {}
   },
   "projects": {
-    "/home/wojtek/Documenti/GitHub/chimp-optimization-algorithm-/malpy.csproj": {
+    "C:\\Users\\Wojtek\\Documents\\GitHub\\chimp-optimization-algorithm-\\malpy.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/wojtek/Documenti/GitHub/chimp-optimization-algorithm-/malpy.csproj",
+        "projectUniqueName": "C:\\Users\\Wojtek\\Documents\\GitHub\\chimp-optimization-algorithm-\\malpy.csproj",
         "projectName": "malpy",
-        "projectPath": "/home/wojtek/Documenti/GitHub/chimp-optimization-algorithm-/malpy.csproj",
-        "packagesPath": "/home/wojtek/.nuget/packages/",
-        "outputPath": "/home/wojtek/Documenti/GitHub/chimp-optimization-algorithm-/obj/",
+        "projectPath": "C:\\Users\\Wojtek\\Documents\\GitHub\\chimp-optimization-algorithm-\\malpy.csproj",
+        "packagesPath": "C:\\Users\\Wojtek\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Wojtek\\Documents\\GitHub\\chimp-optimization-algorithm-\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/home/wojtek/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Wojtek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,7 +49,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -52,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/6.0.122/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
