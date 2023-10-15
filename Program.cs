@@ -8,8 +8,8 @@ namespace malpy{
     class ai {
         public static float licz(float[] wektor)
         {
-            
-            return 3.3f;
+            float wyn=wektor[0]*wektor[0]+1;
+            return wyn;
         }
         static float[] PobierzWiersz(float[,] array, int rowIndex)
         {
@@ -56,6 +56,8 @@ namespace malpy{
             if(znak=="*"){
             for (int i=0 ; i<wektor.Length;i++){
                 wektor[i]=wektor[i]*mnoznik;
+      
+
             }
             }else{
             for (int i=0 ; i<wektor.Length;i++){
@@ -79,7 +81,7 @@ namespace malpy{
         static void Main(string[] args){
             int poupulacja=10;
            
-            int wymiar=2;
+            int wymiar=1;
             float m,a,c;
             int prawyZakres=10;
             int lewyZakres=-10;
@@ -109,14 +111,33 @@ namespace malpy{
                   
                     
                     szymapnse[i,j]=  (float)rand.NextDouble()*(prawyZakres-lewyZakres)+prawyZakres;
+                    // Console.Write("liczba");
+                    // Console.WriteLine((float)rand.NextDouble()*(lewyZakres-prawyZakres)+lewyZakres);
+                    // Console.Write("szempans");
+
+                    // Console.WriteLine(szymapnse[i,j]);
+
                 }
                     wyniki[i] = licz(PobierzWiersz(szymapnse, i));
+                    // Console.Write("szympans ");
+                    // Console.WriteLine(PobierzWiersz(szymapnse, i)[0]);
+                    // Console.Write("wynik ");
+                    Console.WriteLine(wyniki[i]);
             }
             listaNaj= ZnajdzNajmniejszeIndeksy(wyniki);
+            Console.Write("listaNaj[0]= ");
+
+            Console.WriteLine(listaNaj[0]);
+            Console.Write("sympans najlepszy");
             atakuacy=PobierzWiersz(szymapnse, listaNaj[0]);
+            Console.WriteLine(atakuacy[0]);
+
             blokujacy=PobierzWiersz(szymapnse, listaNaj[1]);
             goniacy=PobierzWiersz(szymapnse, listaNaj[2]);
             kierowca=PobierzWiersz(szymapnse, listaNaj[3]);
+            // Console.WriteLine("atakuacy[0]=");
+
+            // Console.WriteLine(atakuacy[0]);
             
             for (int i=0;i<ileIteracji;i++ ){
                 for(int j=0;j<poupulacja;j++){
@@ -136,6 +157,8 @@ namespace malpy{
                             float c4=PoliczC();
                             m=(float)rand.NextDouble();
                             Datakuacy=DoadjOdejij(PomnurzPodziel(atakuacy,c1,"*"),PomnurzPodziel(PobierzWiersz(szymapnse, j),m,"*"),"-");
+                            Console.Write("Datakuacy= ");
+                            Console.WriteLine(Datakuacy[0]);
                             m=(float)rand.NextDouble();
                             Dblokujacy=DoadjOdejij(PomnurzPodziel(blokujacy,c2,"*"),PomnurzPodziel(PobierzWiersz(szymapnse, j),m,"*"),"-");
                             m=(float)rand.NextDouble();
@@ -143,7 +166,11 @@ namespace malpy{
                             m=(float)rand.NextDouble();
                             Dkierowca=DoadjOdejij(PomnurzPodziel(kierowca,c4,"*"),PomnurzPodziel(PobierzWiersz(szymapnse, j),m,"*"),"-");
                             a=2*PoliczR()*PoliczFat(i,ileIteracji)-PoliczFat(i,ileIteracji);
+                            // Console.WriteLine(a);
                             X1=DoadjOdejij(atakuacy,PomnurzPodziel(Datakuacy,a,"*"),"-");
+                            Console.Write("X1= ");
+                            Console.WriteLine(X1[0]);
+
                             a=2*PoliczR()*PoliczFblok(i,ileIteracji)-PoliczFblok(i,ileIteracji);
                             X2=DoadjOdejij(blokujacy,PomnurzPodziel(Dblokujacy,a,"*"),"-");
                             a=2*PoliczR()*PoliczFgon(i,ileIteracji)-PoliczFgon(i,ileIteracji);
@@ -161,12 +188,16 @@ namespace malpy{
                     wyniki[i] = licz(PobierzWiersz(szymapnse, i));
                 }
                 listaNaj= ZnajdzNajmniejszeIndeksy(wyniki);
+                // Console.WriteLine(wyniki);
+                // Console.WriteLine(atakuacy[0]);
+                // Console.WriteLine(licz(atakuacy));
                 atakuacy=PobierzWiersz(szymapnse, listaNaj[0]);
                 blokujacy=PobierzWiersz(szymapnse, listaNaj[1]);
                 goniacy=PobierzWiersz(szymapnse, listaNaj[2]);
                 kierowca=PobierzWiersz(szymapnse, listaNaj[3]); 
             }
-
+        // Console.WriteLine(atakuacy);
+        // Console.WriteLine(wyniki[0]);
 
         
        } 
