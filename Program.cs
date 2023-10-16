@@ -8,7 +8,18 @@ namespace malpy{
     class ai {
         public static float licz(float[] wektor)
         {
-            float wyn = 2 * wektor[0] * wektor[0] * wektor[0] * wektor[0] -  5 * wektor[0] * wektor[0] - 2 * wektor[0] +3;
+            float wyn = 0;
+            //  float wyn = 2 * wektor[0] * wektor[0] * wektor[0] * wektor[0] -  5 * wektor[0] * wektor[0] - 2 * wektor[0] +3;
+             wyn = 10f * wektor.Length;
+            for (int i = 0; i < wektor.Length; i++)
+            {
+                wyn += wektor[i] * wektor[i] - 10f * (float)Math.Cos(2f * (float)Math.PI * wektor[i]);
+            }
+            /*      foreach (float w in wektor)
+                     {
+                         wyn *= w;
+                     }*/
+            /*   wyn=wektor[0]*wektor[0] *wektor[1]* wektor[1];*/
             return wyn;
         }
         static float[] PobierzWiersz(float[,] array, int rowIndex)
@@ -84,13 +95,14 @@ namespace malpy{
             }
             return wektor1;
         }
+
         static void Main(string[] args){
-            int poupulacja=20;
+            int poupulacja = 50;
            
-            int wymiar=1;
+            int wymiar=30;
             float m,a,c;
-            int prawyZakres=10;
-            int lewyZakres=-10;
+            float prawyZakres=10;
+            float lewyZakres=-10;
             float[] atakuacy=new float[wymiar];
             float[] Datakuacy=new float[wymiar];
             float[] blokujacy=new float[wymiar];
@@ -102,7 +114,7 @@ namespace malpy{
             int[] listaNaj=new int[4];
             
             float[,] szymapnse=new float[poupulacja , wymiar];
-            int ileIteracji=50;
+            int ileIteracji=250;
             float[] wyniki = new float[poupulacja];
             float []X1=new float[wymiar];
             float []X2=new float[wymiar];
@@ -192,7 +204,14 @@ namespace malpy{
                             a=2*PoliczR()*PoliczFkier(i,ileIteracji)-PoliczFkier(i,ileIteracji);
                             X4=DoadjOdejij(kierowca,PomnurzPodziel(Dkierowca,a,"*"),"-");
                             NowyX=PomnurzPodziel(DoadjOdejij(X1,DoadjOdejij(X2,DoadjOdejij(X3,X4,"+"),"+"),"+"),4,"/");
+                            
                             for(int k=0;k<wymiar;k++){
+                                if (NowyX[k] < lewyZakres)
+                                {
+                                    NowyX[k] = lewyZakres;
+                                }else if (NowyX[k]>prawyZakres){
+                                    NowyX[k] = prawyZakres;
+                                }
                                 szymapnse[j,k]=NowyX[k];
                             }
                         }
@@ -210,8 +229,11 @@ namespace malpy{
                 goniacy=PobierzWiersz(szymapnse, listaNaj[2]);
                 kierowca=PobierzWiersz(szymapnse, listaNaj[3]); 
             }
-            Console.WriteLine(atakuacy[0]);
+            Console.Write("y=");
+            // Console.WriteLine(atakuacy[0]);
             Console.WriteLine(licz(atakuacy));
+            Console.Write("pozycja małpy");
+            Array.ForEach(atakuacy, Console.WriteLine);
 
 
         }
