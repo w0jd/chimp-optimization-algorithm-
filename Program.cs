@@ -128,7 +128,7 @@ namespace malpy{
                 for(int j=0;j<wymiar;j++){
                   
                     
-                    szymapnse[i,j]=  (float)rand.NextDouble()*(prawyZakres-lewyZakres)+prawyZakres;
+                    szymapnse[i,j]=  (float)rand.NextDouble()*(prawyZakres-lewyZakres)+lewyZakres;
                     // Console.Write("liczba");
                     // Console.WriteLine((float)rand.NextDouble()*(lewyZakres-prawyZakres)+lewyZakres);
                     // Console.Write("szempans");
@@ -164,7 +164,7 @@ namespace malpy{
                       if(mu<0.5f){
                             for(int k=0;k<wymiar;k++){
                                 //ziterować po elementach tablicy 
-                             szymapnse[j,k]= (float)rand.NextDouble() * (prawyZakres - lewyZakres) + prawyZakres;
+                             szymapnse[j,k]= (float)rand.NextDouble() * (prawyZakres - lewyZakres) + lewyZakres;
                              wyniki[j] = licz(PobierzWiersz(szymapnse, j));
     
                             } 
