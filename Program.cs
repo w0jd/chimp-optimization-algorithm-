@@ -6,6 +6,68 @@ using System.Linq;
 namespace malpy{
 
     class ai {
+        static float wybierzWzor(float[] wektor, int nr, float wymiar)
+        {
+            float a;
+            switch (nr)
+            {
+                case 1:
+
+                    a = licz(wektor);
+                    return a;
+                case 2:
+                    a = RosenbrockFunction(wektor);
+                    return a;
+
+                case 3:
+                    a = SphereFunction(wektor);
+                    return a;
+
+                case 4:
+                    a = BealeFunction(wektor);
+                    return a;
+                case 5:
+                    a = BukinFunctionN6(wektor); return a;
+                case 6:
+                    a = HimmelblausFunction(wektor);
+                    return a;
+            }
+            //a[0] = 1;
+            return 0f;
+        }
+        static float[] LosowyWektor(int min, int max, int wymiar)
+        {
+            float[] wektor = new float[wymiar];
+            Random rand = new Random();
+            for (int i = 0; i < wymiar; i++)
+            {
+                wektor[i] = (float)rand.NextDouble() * (max - min) + max;
+            }
+            return wektor;
+        }
+        static float[] MnozWektory(float[] wektor1, float[] wektor2, int wymiar)
+        {
+            float[] wektor = new float[wymiar];
+            for (int i = 0; i < wymiar; i++)
+            {
+                wektor[i] = wektor1[i] * wektor2[i];
+            }
+            return wektor;
+        }
+        static float rozKwa(List<float> lst, float sr)
+        {
+            float sumaKwadratowRoznicy = 0;
+            foreach (float wynik in lst)
+            {
+                float roznica = wynik - sr;
+                float kwadratRoznicy = roznica * roznica;
+                sumaKwadratowRoznicy += kwadratRoznicy;
+
+            }
+            sumaKwadratowRoznicy = (float)Math.Pow(sumaKwadratowRoznicy / lst.Count, 1 / 2f);
+            return sumaKwadratowRoznicy;
+
+        }
         public static float licz(float[] wektor)
         {
             float wyn = 0;
@@ -22,6 +84,49 @@ namespace malpy{
             /*   wyn=wektor[0]*wektor[0] *wektor[1]* wektor[1];*/
             return wyn;
         }
+        public static float RosenbrockFunction(float[] wektor)
+        {
+            float wyn = 0;
+            for (int i = 0; i < wektor.Length - 1; i++)
+            {
+                wyn += 100 * (float)Math.Pow(wektor[i + 1] - wektor[i] * wektor[i], 2) + (float)Math.Pow(1 - wektor[i], 2);
+            }
+            return wyn;
+
+        }
+        public static float SphereFunction(float[] wektor)
+        {
+            float wyn = 0;
+            for (int i = 0; i < wektor.Length; i++)
+            {
+                wyn += wektor[i] * wektor[i];
+            }
+            return wyn;
+        }
+        public static float BealeFunction(float[] wektor)
+        {
+            float wyn = 0;
+            wyn = (float)Math.Pow(1.5f - wektor[0] + wektor[0] * wektor[1], 2) + (float)Math.Pow(2.25f - wektor[0] + wektor[0] * wektor[1] * wektor[1], 2) + (float)Math.Pow(2.625f - wektor[0] + (float)Math.Pow(wektor[1], 3) * wektor[0], 2);
+            return wyn;
+        }
+        public static float BukinFunctionN6(float[] wektor)
+        {
+            float wyn = 0;
+            wyn = 100f * (float)Math.Pow(Math.Abs(wektor[1] - 0.01 * wektor[0] * wektor[0]), 1 / 2) + 0.01f * (float)Math.Abs(wektor[0] + 10);
+            return wyn;
+        }
+        public static float HimmelblausFunction(float[] wektor)
+        {
+            float wyn = 0;
+            wyn = 100f * (float)Math.Pow(wektor[0] * wektor[0] + wektor[1] - 11, 2) + (float)Math.Abs(wektor[0] + wektor[1] * wektor[1] - 7);
+            return wyn;
+        }
+
+
+
+
+
+
         static float[] PobierzWiersz(float[,] array, int rowIndex)
         {
         int liczbaKolumn = array.GetLength(1);
@@ -99,7 +204,7 @@ namespace malpy{
         static void Main(string[] args){
             int poupulacja = 50;
            
-            int wymiar=30;
+            int wymiar=4;
             float m,a,c;
             float prawyZakres=10;
             float lewyZakres=-10;
@@ -114,7 +219,7 @@ namespace malpy{
             int[] listaNaj=new int[4];
             
             float[,] szymapnse=new float[poupulacja , wymiar];
-            int ileIteracji=250;
+            int ileIteracji=25;
             float[] wyniki = new float[poupulacja];
             float []X1=new float[wymiar];
             float []X2=new float[wymiar];
